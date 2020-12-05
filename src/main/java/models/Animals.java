@@ -1,5 +1,5 @@
 package models;
-
+import org.sql2o.Connection;
 import java.util.Objects;
 
 public class Animals {
@@ -33,4 +33,15 @@ public String type;
                     this.getId() == newAnimals.getId();
         }
     }
+    public void save() {
+        try (Connection con = DB.sql2o.open()){
+            String sql = "INSERT INTO animals (animalName, type) VALUES (:name, :id, :type)";
+            this.id = (int) con.createQuery(sql,true)
+            .addParameter("animalName", this.animalName)
+                    .addParameter("type", this.type)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
+
 }

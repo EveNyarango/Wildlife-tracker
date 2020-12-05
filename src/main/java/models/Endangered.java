@@ -24,8 +24,8 @@ public class Endangered {
         this.name = name;
         this.health = health;
         this.age = age;
-        this.setType(DATABASE_TYPE);
-//        type = DATABASE_TYPE;
+//        this.setType(DATABASE_TYPE);
+        type = DATABASE_TYPE;
     }
 
     private void setType(String databaseType) {
@@ -33,6 +33,10 @@ public class Endangered {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

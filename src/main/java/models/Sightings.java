@@ -5,14 +5,16 @@ import org.sql2o.Sql2o;
 import org.sql2o.Query;
 import org.sql2o.Sql2oException;
 
-public class sightings {
+import java.util.List;
+
+public class Sightings {
 
     private int id;
     private String location;
     private String rangerName;
     private String aniName;
 
-    public sightings(String location, String rangerName, String aniName) {
+    public Sightings(String location, String rangerName, String aniName) {
         this.id = id;
         this.location = location;
         this.rangerName = rangerName;
@@ -40,7 +42,15 @@ public class sightings {
         return rangerName;
     }
 
+public static List<Sightings> getAllSightings(){
+        String sql = "SELECT * FROM sightings;";
 
+        try (Connection con = DB.sql2o.open()){
+            Query query =con.createQuery(sql);
+            System.out.println(query.executeAndFetch(Sightings.class));
+            return query.executeAndFetch(Sightings.class);
+        }
+}
 
     public void save() {
         try (Connection con = DB.sql2o.open()) {
@@ -56,6 +66,16 @@ public class sightings {
             System.out.println(ex);
         }
     }
+    public void delete_sightings() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "DELETE FROM sightings WHERE id = :id;";
+            con.createQuery(sql)
+                    .addParameter("id", this.id)
+                    .executeUpdate();
 
+        }catch (Sql2oException ex ){
+            System.out.println(ex);
+        }
+    }
 
 }

@@ -2,6 +2,7 @@ package models;
 //import models.Endangered;
 
 import org.sql2o.Connection;
+import org.sql2o.Sql2oException;
 
 public class Endangered {
     private int id;
@@ -86,6 +87,8 @@ public class Endangered {
             con.createQuery(sql)
                     .addParameter("id", this.id)
                     .executeUpdate();
+        }catch (Sql2oException ex ){
+            System.out.println(ex);
         }
     }
 }

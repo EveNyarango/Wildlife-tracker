@@ -13,12 +13,17 @@ public class endangered {
     public static final String YOUNG = "young";
     public static final String ADULT = "adult";
 
+    private static final String DATABASE_TYPE = "endangered";
 
-    public endangered( String name, String health, int age) {
+    public endangered(String name, String health, int age, String type) {
         this.id = id;
         this.name = name;
         this.health = health;
         this.age = age;
+        this.setType(DATABASE_TYPE);
+    }
+
+    private void setType(String databaseType) {
     }
 
     public int getId() {
@@ -35,5 +40,9 @@ public class endangered {
 
     public int getAge() {
         return age;
+    }
+
+    public static String getDatabaseType() {
+        return DATABASE_TYPE;
     }
 }

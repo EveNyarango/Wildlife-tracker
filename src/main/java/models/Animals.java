@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class Animals {
+
+
+
     private int id;
 private String animalName;
 
@@ -23,8 +26,14 @@ public String type;
         return id;
     }
 
+
+
     public String getAnimalName() {
         return animalName;
+    }
+
+    public static Object all() {
+        return all();
     }
 
     @Override

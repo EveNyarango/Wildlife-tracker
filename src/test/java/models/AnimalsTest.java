@@ -1,10 +1,15 @@
 package models;
 
 import org.junit.Test;
-
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Rule;
 import static org.junit.Assert.*;
 
 public class AnimalsTest {
+
+//  @Rule
+//  public DatabaseRule database = new DatabaseRule();
 
   @Test
   public void Animals_instantiatesName_of_the_animal_true_String(){
@@ -13,10 +18,17 @@ public class AnimalsTest {
     }
 
     @Test
-    public void save() {
+    public void save_animals_to_the_Database() {
+    Animals testAnimals = new Animals(2, "Giraffe");
+    testAnimals.save();
+    asserTrue(Animals.all().get(2).equals(testAnimals));
     }
 
     @Test
-    public void delete() {
+    public void deleteAnimals_list() {
+      Animals testAnimals = new Animals(2, "Giraffe");
+      testAnimals.save();
+      testAnimals.delete();
+      assertEquals(0, Animals.all().size());
     }
 }

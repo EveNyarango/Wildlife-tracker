@@ -1,5 +1,8 @@
 package models;
 import org.sql2o.Connection;
+import org.sql2o.Sql2o;
+import org.sql2o.Sql2oException;
+import java.util.List;
 import java.util.Objects;
 
 public class Animals {
@@ -8,11 +11,12 @@ private String animalName;
 
 public String type;
     private final String DATABASE_TYPE = "animal";
+    private final Sql2o sql2o;
 
-    public Animals(int id, String animalName) {
+    public Animals(int id, String animalName, Sql2o sql2o) {
         this.id = id;
         this.animalName = animalName;
-
+        this.sql2o = sql2o;
     }
 
     public int getId() {
@@ -33,6 +37,20 @@ public String type;
                     this.getId() == newAnimals.getId();
         }
     }
+
+    @Override
+    public List<Animals>getAllAnimals() {
+        String sql = "SELECT * FROM animals WHERE type='animal'";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Animals.class);
+        } catch (Sql2oException ex) {
+System.out.println( ex);
+return null;
+        }
+    }
+
     public void save() {
         try (Connection con = DB.sql2o.open()){
             String sql = "INSERT INTO animals (animalName, type) VALUES (:name, :id, :type)";
@@ -43,5 +61,12 @@ public String type;
                     .getKey();
         }
     }
-
+public void delete(){
+    try (Connection con = DB.sql2o.open()){
+        String sql = "DELETE FROM animals WHERE id =:id;";
+        con.createQuery(sql)
+        .addParameter("id", this.id)
+                .executeUpdate();
+    }
+}
 }

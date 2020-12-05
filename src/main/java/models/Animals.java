@@ -1,5 +1,6 @@
 package models;
 import org.sql2o.Connection;
+import org.sql2o.Query;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 import java.util.List;
@@ -26,7 +27,9 @@ public String type;
         return id;
     }
 
-
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getAnimalName() {
         return animalName;
@@ -47,19 +50,16 @@ public String type;
         }
     }
 
-//    add interface
-//    @Override
-//    public List<Animals>getAllAnimals() {
-//        String sql = "SELECT * FROM animals WHERE type='animal'";
-//        try (Connection con = sql2o.open()) {
-//            return con.createQuery(sql)
-//                    .throwOnMappingFailure(false)
-//                    .executeAndFetch(Animals.class);
-//        } catch (Sql2oException ex) {
-//System.out.println( ex);
-//return null;
-//        }
-//    }
+
+    public static List<Animals> getAllAnimals(){
+        String sql = "SELECT * FROM animals;";
+
+        try (Connection con = DB.sql2o.open()){
+            Query query =con.createQuery(sql);
+            System.out.println(query.executeAndFetch(Animals.class));
+            return query.executeAndFetch(Animals.class);
+        }
+    }
 
     public void save() {
         try (Connection con = DB.sql2o.open()){

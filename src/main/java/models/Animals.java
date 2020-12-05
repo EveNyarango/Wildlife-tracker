@@ -11,12 +11,12 @@ private String animalName;
 
 public String type;
     private final String DATABASE_TYPE = "animal";
-    private final Sql2o sql2o;
+//    private final Sql2o sql2o;
 
-    public Animals(int id, String animalName, Sql2o sql2o) {
+    public Animals(int id, String animalName) {
         this.id = id;
         this.animalName = animalName;
-        this.sql2o = sql2o;
+//        this.sql2o = sql2o;
     }
 
     public int getId() {
@@ -38,18 +38,19 @@ public String type;
         }
     }
 
-    @Override
-    public List<Animals>getAllAnimals() {
-        String sql = "SELECT * FROM animals WHERE type='animal'";
-        try (Connection con = sql2o.open()) {
-            return con.createQuery(sql)
-                    .throwOnMappingFailure(false)
-                    .executeAndFetch(Animals.class);
-        } catch (Sql2oException ex) {
-System.out.println( ex);
-return null;
-        }
-    }
+//    add interface
+//    @Override
+//    public List<Animals>getAllAnimals() {
+//        String sql = "SELECT * FROM animals WHERE type='animal'";
+//        try (Connection con = sql2o.open()) {
+//            return con.createQuery(sql)
+//                    .throwOnMappingFailure(false)
+//                    .executeAndFetch(Animals.class);
+//        } catch (Sql2oException ex) {
+//System.out.println( ex);
+//return null;
+//        }
+//    }
 
     public void save() {
         try (Connection con = DB.sql2o.open()){

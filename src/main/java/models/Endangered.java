@@ -4,6 +4,8 @@ package models;
 import org.sql2o.Connection;
 import org.sql2o.Sql2oException;
 
+import java.util.List;
+
 public class Endangered {
     private int id;
     private String name;
@@ -28,6 +30,10 @@ public class Endangered {
 //        this.setType(DATABASE_TYPE);
         type = DATABASE_TYPE;
     }
+
+//    public static List<Endangered> All() {
+//        return list;
+//    }
 
     private void setType(String databaseType) {
     }

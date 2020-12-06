@@ -60,9 +60,10 @@ public String type;
         String sql = "SELECT * FROM animals;";
 
         try (Connection con = DB.sql2o.open()){
-            Query query =con.createQuery(sql);
-            System.out.println(query.executeAndFetch(Animals.class));
-            return query.executeAndFetch(Animals.class);
+       return   con.createQuery(sql)
+               .throwOnMappingFailure(false)
+                 .executeAndFetch(Animals.class);
+
         }
     }
 

@@ -44,11 +44,11 @@ public class App {
             return new ModelAndView(model, "SuccessAnimal.hbs");
         }, new HandlebarsTemplateEngine());
 
-//        get("/Sightings", (request, response) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            model.put("Sightings", Sightings.getAllSightings());
-//            return new ModelAndView(model, "Sightings.hbs");
-//        }, new HandlebarsTemplateEngine());
+        get("/Animals", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("Animals", Animals.getAllAnimals());
+            return new ModelAndView(model, "Animals.hbs");
+        }, new HandlebarsTemplateEngine());
 
 
 //endangered

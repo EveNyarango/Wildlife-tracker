@@ -1,9 +1,11 @@
 {{#partial "content"}}
-   <body>
+   <body style="background-image: url('images/animals.jpg'); background-size:cover; background-repeat:no-repeat;">
+   <br>
+   <br>
    <div class="row">
        <div class="col-md-6">
            <div class="card">
-               {{#each addAnimal1}}
+               {{#each Animals}}
                <h4>Name of the animal: {{animalName}}</h4>
 
                {{/each}}
@@ -20,3 +22,4 @@
    </body>
 
     {{/partial}}
+{{> layout.hbs}}

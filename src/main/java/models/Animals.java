@@ -32,6 +32,7 @@ public String type;
     }
 
     public String getAnimalName() {
+
         return animalName;
     }
 

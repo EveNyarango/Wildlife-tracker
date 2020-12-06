@@ -3,15 +3,16 @@
     {{/partial}}
 
 {{#partial "content"}}
-    <body>
+    <body style="background-image: url('images/jungle.jpg'); background-size:cover; background-repeat:no-repeat;">
     <form action="/addAnimal" method="post">
         <div class="form-group">
             <label for="name">Name of the animal:{{animalName}}</label>
             <input id="name" name="name" class="form-control" type="text" required>
         </div>
     </form>
-    <button class="btn btn-success" href="/successAnimal" type="submit"> Submit</button>
-<!--    <a class="btn btn-warning" href="/addAnimal">Add Animal</a>-->
+    <button class="btn btn-success" href="/SuccessAnimal" type="submit"> Submit</button>
+
+    <!--    <a class="btn btn-warning" href="/addAnimal">Add Animal</a>-->
     </body>
 
     {{/partial}}

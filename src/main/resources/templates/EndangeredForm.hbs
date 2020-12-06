@@ -5,7 +5,7 @@
 
 
 {{#partial "content"}}
-    <body style="background-image: url('images/danger5.jpg'); background-size:cover; background-repeat:no-repeat;">
+    <body style="background-image: url('images/danger.jpg'); background-size:cover; background-repeat:no-repeat;">
     <form action="/report"   method="post">
         <div class="form-group">
             <label for="name">Name of the Animal:{{name}}</label>
@@ -29,9 +29,12 @@
                 <option value="Adult">Adult</option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="type">Animal Species:{{type}}</label>
+            <input id="type" name="type" class="form-control" type="text" required>
+        </div>
 
-
-        <button class="btn btn-success" href="/successDanger" type="submit"> Submit</button>
+        <button class="btn btn-success" href="/SuccessDanger" type="submit"> Submit</button>
 
     </form>
     </body>

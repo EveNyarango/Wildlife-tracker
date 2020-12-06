@@ -56,9 +56,11 @@ public static List<Sightings> getAllSightings(){
         try (Connection con = DB.sql2o.open()) {
             String sql = "INSERT INTO sightings (location, rangerName, aniName) VALUES (:location, :rangerName, :aniName);";
             this.id = (int) con.createQuery(sql,true)
+                    .throwOnMappingFailure(false)
                     .addParameter("location", this.location)
                     .addParameter("rangerName", this.rangerName)
                     .addParameter("aniName", this.aniName)
+
                     .executeUpdate()
                     .getKey();
             setId(id);

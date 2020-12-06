@@ -10,7 +10,7 @@ public class Endangered {
     private int id;
     private String name;
     private String health;
-    private int age;
+    private String age;
 
     public static final String HEALTHY = "healthy";
     public static final String ILL = "ill";
@@ -22,7 +22,7 @@ public class Endangered {
     private static final String DATABASE_TYPE = "endangered";
     private int type;
 
-    public Endangered(String name, String health, int age, String type) {
+    public Endangered(String name, String health, String age, String type) {
         this.id = id;
         this.name = name;
         this.health = health;
@@ -54,7 +54,7 @@ public class Endangered {
         return health;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 

@@ -1,0 +1,20 @@
+{{#partial "title"}}
+    <h4>Add an animal to Jungle World</h4>
+    {{/partial}}
+
+{{#partial "content"}}
+    <body>
+    <form action="/addAnimal" method="post">
+        <div class="form-group">
+            <label for="name">Name of the animal:{{animalName}}</label>
+            <input id="name" name="name" class="form-control" type="text" required>
+        </div>
+    </form>
+    <button class="btn btn-success" href="/successAnimal" type="submit"> Submit</button>
+<!--    <a class="btn btn-warning" href="/addAnimal">Add Animal</a>-->
+    </body>
+
+    {{/partial}}
+
+
+{{> layout.hbs}}

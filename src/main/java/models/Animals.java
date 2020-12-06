@@ -17,8 +17,8 @@ public String type;
     private final String DATABASE_TYPE = "animal";
 //    private final Sql2o sql2o;
 
-    public Animals(int id, String animalName) {
-        this.id = id;
+    public Animals( String animalName) {
+
         this.animalName = animalName;
 //        this.sql2o = sql2o;
     }
@@ -29,6 +29,10 @@ public String type;
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setAnimalName(String animalName) {
+        this.animalName = animalName;
     }
 
     public String getAnimalName() {
@@ -64,12 +68,13 @@ public String type;
 
     public void save() {
         try (Connection con = DB.sql2o.open()){
-            String sql = "INSERT INTO animals (animalName, type) VALUES (:name, :id, :type)";
+            String sql = "INSERT INTO animals (animalname, type) VALUES (:animalname, :type)";
             this.id = (int) con.createQuery(sql,true)
-            .addParameter("animalName", this.animalName)
+                    .addParameter("animalname", this.animalName)
                     .addParameter("type", this.type)
                     .executeUpdate()
                     .getKey();
+            setId(id);
         }
     }
 public void delete(){

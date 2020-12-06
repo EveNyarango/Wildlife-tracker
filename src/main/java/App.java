@@ -1,6 +1,8 @@
 import models.Animals;
+import models.DB;
 import models.Endangered;
 import models.Sightings;
+import org.sql2o.Sql2o;
 import spark.Request;
 import spark.Response;
 import spark.ModelAndView;
@@ -15,6 +17,9 @@ import static spark.Spark.staticFileLocation;
 public class App {
     public static void main (String[] args){
         staticFileLocation("/public");
+
+        Sql2o sql2o = new Sql2o ("jdbc:postgresql://localhost:5432/wildlife_tracker", "moringa", "Nya2rango@");
+
 
 //        homepage
         get("/", (request, response) -> {
@@ -31,15 +36,19 @@ public class App {
         post("/addAnimal", (request, response) -> {
 
             Map<String, Object> model = new HashMap<>();
-            int id = Integer.parseInt(request.params("id"));
             String animalName = request.queryParams("animalName");
 
-            Animals animals = new Animals(id,animalName);
+            Animals animals = new Animals(animalName);
             animals.save();
             model.put("animals", animals);
-            return new ModelAndView(model, "successAnimal.hbs");
-
+            return new ModelAndView(model, "SuccessAnimal.hbs");
         }, new HandlebarsTemplateEngine());
+
+//        get("/Sightings", (request, response) -> {
+//            Map<String, Object> model = new HashMap<>();
+//            model.put("Sightings", Sightings.getAllSightings());
+//            return new ModelAndView(model, "Sightings.hbs");
+//        }, new HandlebarsTemplateEngine());
 
 
 //endangered

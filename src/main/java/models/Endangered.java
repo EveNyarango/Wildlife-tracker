@@ -20,22 +20,19 @@ public class Endangered {
     public static final String ADULT = "adult";
 
     private static final String DATABASE_TYPE = "endangered";
-    private int type;
+    private String type;
 
-    public Endangered(String name, String health, String age, String type) {
-        this.id = id;
+    public Endangered(String name, String health, String age) {
         this.name = name;
         this.health = health;
         this.age = age;
-//        this.setType(DATABASE_TYPE);
-        type = DATABASE_TYPE;
+        this.setType(DATABASE_TYPE);
     }
 
-//    public static List<Endangered> All() {
-//        return list;
-//    }
 
-    private void setType(String databaseType) {
+
+    private void setType(String type) {
+        this.type = type;
     }
 
     public int getId() {
@@ -74,16 +71,29 @@ public class Endangered {
         }
     }
 
+    public static List<Animals> getAllEndangered(){
+        String sql = "SELECT * FROM animals WHERE type = endangered;";
+
+        try (Connection con = DB.sql2o.open()){
+            return   con.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Animals.class);
+
+        }
+    }
     public void save() {
         try (Connection con = DB.sql2o.open()){
-            String sql = "INSERT INTO animals (name, health, age, type) VALUES (:name, :health, :age, :type)";
+            String sql = "INSERT INTO animals (animalname, health, type, age) VALUES (:animalname, :health, :type, :age)";
             this.id = (int) con.createQuery(sql,true)
-                    .addParameter("name", this.name)
+                    .addParameter("animalname", this.name)
                     .addParameter("health", this.health)
                     .addParameter("age", this.age)
                     .addParameter("type", this.type)
                             .executeUpdate()
                             .getKey();
+            setId(id);
+        }catch (Sql2oException ex ){
+            System.out.println(ex);
         }
     }
 

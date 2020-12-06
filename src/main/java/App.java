@@ -64,15 +64,17 @@ public class App {
             String name = request.queryParams("name");
             String health = request.queryParams("health");
             String age = request.queryParams("age");
-            String type = request.queryParams("type");
-
-            Endangered endangered = new Endangered(name, health,age, type);
+            Endangered endangered = new Endangered(name, health,age);
             endangered.save();
             model.put("endangered", endangered);
             return new ModelAndView(model, "SuccessDanger.hbs");
         }, new HandlebarsTemplateEngine());
 
-
+        get("/Endangered", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("Endangered", Endangered.getAllEndangered());
+            return new ModelAndView(model, "Endangered.hbs");
+        }, new HandlebarsTemplateEngine());
 
 //        Sightings
         get("/SightingsForm", (request, response) -> {

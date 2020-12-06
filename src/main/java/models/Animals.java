@@ -7,19 +7,17 @@ import java.util.List;
 import java.util.Objects;
 
 public class Animals {
-
-
-
     private int id;
-private String animalName;
-
-public String type;
+    private String animalName;
+    public String type;
     private final String DATABASE_TYPE = "animal";
+
 //    private final Sql2o sql2o;
 
     public Animals( String animalName) {
-
         this.animalName = animalName;
+        this.setType(DATABASE_TYPE);
+
 //        this.sql2o = sql2o;
     }
 
@@ -29,6 +27,10 @@ public String type;
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public void setAnimalName(String animalName) {
@@ -57,7 +59,7 @@ public String type;
 
 
     public static List<Animals> getAllAnimals(){
-        String sql = "SELECT * FROM animals;";
+        String sql = "SELECT * FROM animals where type=animal;";
 
         try (Connection con = DB.sql2o.open()){
        return   con.createQuery(sql)

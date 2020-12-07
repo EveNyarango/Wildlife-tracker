@@ -35,11 +35,8 @@ code .
 Run the project on live server
 
 ## BDD
-
-![wildhome](https://user-images.githubusercontent.com/70526252/101399686-db6b3c80-38e0-11eb-8f0b-823d7b2f66c8.png)
-
-![wildendangered](https://user-images.githubusercontent.com/70526252/101399733-efaf3980-38e0-11eb-8154-34ca51ef99f7.png)
-
+**Animals **
+Add animals
 
 **Endangered Animal **
 Enter animal.
@@ -52,7 +49,9 @@ Location of the endangered animal
 Name of the Ranger reporting.
 
 ## Demo
+![wildhome](https://user-images.githubusercontent.com/70526252/101399686-db6b3c80-38e0-11eb-8f0b-823d7b2f66c8.png)
 
+![wildendangered](https://user-images.githubusercontent.com/70526252/101399733-efaf3980-38e0-11eb-8154-34ca51ef99f7.png)
 ## Link
 evewildtracker.herokuapp.com/
 

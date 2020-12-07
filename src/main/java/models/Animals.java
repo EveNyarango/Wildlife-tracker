@@ -59,12 +59,12 @@ public class Animals {
 
 
     public static List<Animals> getAllAnimals(){
-        String sql = "SELECT * FROM animals where type=animal;";
+        String sql = "SELECT * FROM animals where type='animal';";
 
         try (Connection con = DB.sql2o.open()){
-       return   con.createQuery(sql)
-               .throwOnMappingFailure(false)
-                 .executeAndFetch(Animals.class);
+            return   con.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Animals.class);
 
         }
     }
@@ -80,12 +80,15 @@ public class Animals {
             setId(id);
         }
     }
-public void delete(){
-    try (Connection con = DB.sql2o.open()){
-        String sql = "DELETE FROM animals WHERE id =:id;";
-        con.createQuery(sql)
-        .addParameter("id", this.id)
-                .executeUpdate();
+
+
+
+    public void delete(){
+        try (Connection con = DB.sql2o.open()){
+            String sql = "DELETE FROM animals WHERE id =:id;";
+            con.createQuery(sql)
+                    .addParameter("id", this.id)
+                    .executeUpdate();
+        }
     }
-}
 }

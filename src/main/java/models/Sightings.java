@@ -60,7 +60,6 @@ public static List<Sightings> getAllSightings(){
                     .addParameter("location", this.location)
                     .addParameter("rangerName", this.rangerName)
                     .addParameter("aniName", this.aniName)
-
                     .executeUpdate()
                     .getKey();
             setId(id);

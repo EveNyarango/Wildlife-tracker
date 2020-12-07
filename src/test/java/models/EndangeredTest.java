@@ -8,7 +8,7 @@ public class EndangeredTest {
 
     @Test
     public void Animals_instantiatesName_of_the_animal_true_String(){
-        Endangered testEndangered = new Endangered("Lion", "okay", "newborn", "Female");
+        Endangered testEndangered = new Endangered("Lion", "Okay", "Newborn");
         assertEquals("Lion", testEndangered.getName());
     }
 

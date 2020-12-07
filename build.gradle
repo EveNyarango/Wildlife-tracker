@@ -25,4 +25,4 @@ dependencies {
 }
 
 apply plugin: 'java'
-applicationName = 'evewildlifetracker'
+applicationName = 'evewildtracker'

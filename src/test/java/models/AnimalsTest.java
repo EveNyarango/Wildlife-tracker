@@ -8,21 +8,19 @@ import static org.junit.Assert.*;
 
 public class AnimalsTest {
 
-//  @Rule
-//  public DatabaseRule database = new DatabaseRule();
 
   @Test
-  public void Animals_instantiatesName_of_the_animal_true_String(){
+  public void Animals_instantiatesName_of_the_animal_true_String() {
       Animals testAnimals = new Animals("Rhino");
       assertEquals("Rhino", testAnimals.getAnimalName());
-    }
+  }
 
-//
+
 //    @Test
-//    public void save_animals_to_the_Database() {
-//      Animals testAnimals = new Animals(2, "Giraffe");
-//      testAnimals.save();
-//      assertTrue(Animals.all().get(2).equals(testAnimals));
+//    public void save_successfully_List() {
+//        Animals testAnimals = new Animals("Lion");;
+//        testAnimals.save();
+//        assertTrue(Endangered.getAllEndangered().get(0).equals(testAnimals));
 //    }
 
 

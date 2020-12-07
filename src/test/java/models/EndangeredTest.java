@@ -12,19 +12,14 @@ public class EndangeredTest {
         assertEquals("Lion", testEndangered.getName());
     }
 
-//    @Test
-//    public void saveMethodWorks(){
-//        Endangered tiger = new Endangered("Lion", "okay", 10, "Female");
-//        tiger.save();
-//        System.out.println("successfully saved");
-//        assertEquals(tiger.getName(), Endangered.All().get(0).getName());
+
+//        @Test
+//    public void save_successfully_List() {
+//        Endangered testEndangered = new Endangered("Lion", "Okay", "Newborn");;
+//        testEndangered.save();
+//        assertTrue(Endangered.getAllEndangered().get(0).equals(testEndangered));
 //    }
 
-    @Test
-    public void save() {
-    }
 
-    @Test
-    public void delete() {
-    }
+
 }

@@ -13,11 +13,11 @@ public class SightingsTest {
         Sightings testSightings = new Sightings("Zone B", "Kamala", "tiger");
         assertEquals("Zone B", testSightings.getLocation());
     }
-//    @Test
-//    public void save_successfully_List() {
-//        Sightings testSightings = new Sightings("Zone A", "Kamala", "Zebra");;
-//        testSightings.save();
-//        assertTrue(Endangered.getAllEndangered().get(0).equals(testSightings));
-//    }
+    @Test
+    public void save_successfully_List() {
+        Sightings testSightings = new Sightings("Zone A", "Kamala", "Zebra");;
+        testSightings.save();
+        assertTrue(Endangered.getAllEndangered().get(0).equals(testSightings));
+    }
 
 }

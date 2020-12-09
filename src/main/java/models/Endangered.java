@@ -7,7 +7,7 @@ import org.sql2o.Sql2oException;
 
 import java.util.List;
 
-public class Endangered {
+public class Endangered implements DatabaseManagement  {
     private int id;
     private String name;
     private String health;

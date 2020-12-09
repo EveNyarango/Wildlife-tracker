@@ -6,7 +6,7 @@ import org.sql2o.Sql2oException;
 import java.util.List;
 import java.util.Objects;
 
-public class Animals {
+public class Animals implements DatabaseManagement{
     private int id;
     private String animalName;
     public String type;

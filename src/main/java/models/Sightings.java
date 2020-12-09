@@ -7,7 +7,7 @@ import org.sql2o.Sql2oException;
 
 import java.util.List;
 
-public class Sightings {
+public class Sightings implements DatabaseManagement{
 
     private int id;
     private String location;

@@ -31,7 +31,7 @@
 //        return rangerId;
 //    }
 //
-//    public static <Ranger> Ranger() {
+//    public <Ranger> Ranger() {
 //        String sql = "SELECT * FROM rangers";
 //        try(Connection con = DB.sql2o.open()){
 //            return con.createQuery(sql).executeAndFetch(Ranger.class);
